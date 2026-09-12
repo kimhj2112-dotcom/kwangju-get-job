@@ -1,2 +1,1 @@
-# -simple-shooting-game
-슈팅게임제작연습용
+청년취업도움
