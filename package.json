@@ -1,0 +1,24 @@
+{
+  "name": "kwangju-get-job",
+  "version": "1.0.0",
+  "description": "광주 청년 취업정보 사이트 서버 및 사용자 인증 API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "job",
+    "express",
+    "sqlite",
+    "auth"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.7.0",
+    "express": "^4.21.2"
+  }
+}

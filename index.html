@@ -72,6 +72,168 @@ header {
     color: #1769e0;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-btn {
+    background: #1769e0;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(23, 105, 224, 0.22);
+    transition: 0.2s;
+}
+
+.auth-btn:hover {
+    background: #0f58c3;
+    transform: translateY(-1px);
+}
+
+.auth-btn.secondary {
+    background: #ecf3ff;
+    color: #1769e0;
+    box-shadow: none;
+}
+
+.auth-btn.secondary:hover {
+    background: #dfeeff;
+}
+
+.login-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 22, 31, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.login-modal.open {
+    display: flex;
+}
+
+.login-modal-content {
+    position: relative;
+    width: min(440px, 100%);
+    background: white;
+    border-radius: 18px;
+    padding: 28px 24px 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+}
+
+.login-modal-content h2 {
+    margin-bottom: 16px;
+    font-size: 28px;
+    text-align: center;
+}
+
+.auth-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+    border: 1px solid #e3ebff;
+    border-radius: 10px;
+    padding: 6px;
+    background: #f6f9ff;
+}
+
+.auth-tab {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: #48607b;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.auth-tab.active {
+    background: white;
+    color: #1769e0;
+    box-shadow: 0 2px 8px rgba(23, 105, 224, 0.08);
+}
+
+.form-panel {
+    display: none;
+}
+
+.form-panel.active {
+    display: block;
+}
+
+.login-form,
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.login-form label,
+.signup-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2f3b52;
+}
+
+.login-form input,
+.signup-form input {
+    border: 1px solid #dfe7f5;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 15px;
+    outline: none;
+}
+
+.login-form input:focus,
+.signup-form input:focus {
+    border-color: #1769e0;
+    box-shadow: 0 0 0 3px rgba(23, 105, 224, 0.12);
+}
+
+.submit-btn {
+    margin-top: 8px;
+    background: #1769e0;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.login-message,
+.signup-message {
+    min-height: 20px;
+    font-size: 14px;
+    color: #e74c3c;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    line-height: 1;
+    color: #666;
+    cursor: pointer;
+}
+
 /* HERO */
 
 .hero {
@@ -369,6 +531,11 @@ footer {
             <a href="#education">교육·자격증</a>
             <a href="#interview">자소서·면접</a>
             <a href="#center">지원기관</a>
+        </div>
+
+        <div class="nav-right">
+            <button class="auth-btn secondary" id="openSignupModal" type="button">회원가입</button>
+            <button class="auth-btn" id="openLoginModal" type="button">로그인</button>
         </div>
 
     </nav>
@@ -722,6 +889,61 @@ footer {
 
 </footer>
 
+<div class="login-modal" id="loginModal" aria-hidden="true">
+    <div class="login-modal-content" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+        <button class="close-btn" id="closeLoginModal" type="button" aria-label="닫기">×</button>
+        <h2 id="authTitle">로그인</h2>
+
+        <div class="auth-tabs">
+            <button type="button" class="auth-tab active" data-tab="login">로그인</button>
+            <button type="button" class="auth-tab" data-tab="signup">회원가입</button>
+        </div>
+
+        <div class="form-panel active" id="loginPanel">
+            <form class="login-form" id="loginForm">
+                <label>
+                    아이디
+                    <input type="text" id="loginId" placeholder="아이디를 입력하세요" maxlength="20">
+                </label>
+
+                <label>
+                    비밀번호
+                    <input type="password" id="loginPassword" placeholder="비밀번호를 입력하세요" maxlength="20">
+                </label>
+
+                <button type="submit" class="submit-btn">로그인</button>
+                <p class="login-message" id="loginMessage"></p>
+            </form>
+        </div>
+
+        <div class="form-panel" id="signupPanel">
+            <form class="signup-form" id="signupForm">
+                <label>
+                    이름
+                    <input type="text" id="signupName" placeholder="이름을 입력하세요" maxlength="20">
+                </label>
+
+                <label>
+                    아이디
+                    <input type="text" id="signupId" placeholder="아이디를 입력하세요" maxlength="20">
+                </label>
+
+                <label>
+                    이메일
+                    <input type="email" id="signupEmail" placeholder="example@email.com">
+                </label>
+
+                <label>
+                    비밀번호
+                    <input type="password" id="signupPassword" placeholder="비밀번호를 입력하세요" maxlength="30">
+                </label>
+
+                <button type="submit" class="submit-btn">회원가입</button>
+                <p class="signup-message" id="signupMessage"></p>
+            </form>
+        </div>
+    </div>
+</div>
 
 <script>
 
@@ -741,7 +963,7 @@ function searchJobs() {
         "'" + keyword +
         "' 검색 기능입니다.\n\n" +
         "실제 사이트에서는 광주 채용공고와\n" +
-        청년지원사업 데이터를 검색하도록 연결할 수 있습니다."
+        "청년지원사업 데이터를 검색하도록 연결할 수 있습니다."
     );
 }
 
@@ -757,6 +979,177 @@ document
         }
 
     });
+
+
+/* 로그인 / 회원가입 모달 */
+
+const loginModal = document.getElementById("loginModal");
+const openLoginModal = document.getElementById("openLoginModal");
+const openSignupModal = document.getElementById("openSignupModal");
+const closeLoginModal = document.getElementById("closeLoginModal");
+const authTabs = document.querySelectorAll(".auth-tab");
+const formPanels = document.querySelectorAll(".form-panel");
+const loginForm = document.getElementById("loginForm");
+const signupForm = document.getElementById("signupForm");
+const loginMessage = document.getElementById("loginMessage");
+const signupMessage = document.getElementById("signupMessage");
+const loginIdInput = document.getElementById("loginId");
+const loginPasswordInput = document.getElementById("loginPassword");
+const authTitle = document.getElementById("authTitle");
+
+function openModal(mode = "login") {
+    loginModal.classList.add("open");
+    loginModal.setAttribute("aria-hidden", "false");
+    setAuthMode(mode);
+}
+
+function closeModal() {
+    loginModal.classList.remove("open");
+    loginModal.setAttribute("aria-hidden", "true");
+    loginForm.reset();
+    signupForm.reset();
+    loginMessage.textContent = "";
+    signupMessage.textContent = "";
+}
+
+function setAuthMode(mode) {
+    authTabs.forEach(function(tab) {
+        const isActive = tab.dataset.tab === mode;
+        tab.classList.toggle("active", isActive);
+    });
+
+    formPanels.forEach(function(panel) {
+        const isActive = panel.id === (mode === "login" ? "loginPanel" : "signupPanel");
+        panel.classList.toggle("active", isActive);
+    });
+
+    authTitle.textContent = mode === "login" ? "로그인" : "회원가입";
+
+    if (mode === "login") {
+        loginIdInput.focus();
+    } else {
+        document.getElementById("signupName").focus();
+    }
+}
+
+openLoginModal.addEventListener("click", function() {
+    openModal("login");
+});
+
+openSignupModal.addEventListener("click", function() {
+    openModal("signup");
+});
+
+closeLoginModal.addEventListener("click", closeModal);
+
+authTabs.forEach(function(tab) {
+    tab.addEventListener("click", function() {
+        setAuthMode(tab.dataset.tab);
+    });
+});
+
+loginModal.addEventListener("click", function(e) {
+    if (e.target === loginModal) {
+        closeModal();
+    }
+});
+
+window.addEventListener("keydown", function(e) {
+    if (e.key === "Escape" && loginModal.classList.contains("open")) {
+        closeModal();
+    }
+});
+
+loginForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const username = loginIdInput.value.trim();
+    const password = loginPasswordInput.value.trim();
+
+    if (!username || !password) {
+        loginMessage.textContent = "아이디와 비밀번호를 모두 입력해주세요.";
+        loginMessage.style.color = "#e74c3c";
+        return;
+    }
+
+    if (username.length < 3 || password.length < 4) {
+        loginMessage.textContent = "아이디는 3자 이상, 비밀번호는 4자 이상 입력해주세요.";
+        loginMessage.style.color = "#e74c3c";
+        return;
+    }
+
+    try {
+        const response = await fetch("/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(result.error || "로그인 실패");
+        }
+
+        loginMessage.textContent = "로그인 성공! 환영합니다.";
+        loginMessage.style.color = "#1e8e3e";
+
+        const loginBtn = document.getElementById("openLoginModal");
+        loginBtn.textContent = result.user.name + "님";
+
+        setTimeout(function() {
+            closeModal();
+        }, 800);
+    } catch (error) {
+        loginMessage.textContent = error.message;
+        loginMessage.style.color = "#e74c3c";
+    }
+});
+
+signupForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("signupName").value.trim();
+    const username = document.getElementById("signupId").value.trim();
+    const email = document.getElementById("signupEmail").value.trim();
+    const password = document.getElementById("signupPassword").value.trim();
+
+    if (!name || !username || !email || !password) {
+        signupMessage.textContent = "모든 항목을 입력해주세요.";
+        signupMessage.style.color = "#e74c3c";
+        return;
+    }
+
+    if (username.length < 3 || password.length < 4) {
+        signupMessage.textContent = "아이디는 3자 이상, 비밀번호는 4자 이상 입력해주세요.";
+        signupMessage.style.color = "#e74c3c";
+        return;
+    }
+
+    try {
+        const response = await fetch("/api/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, username, email, password })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(result.error || "회원가입 실패");
+        }
+
+        signupMessage.textContent = "회원가입 완료! 서버 DB에 저장되었습니다.";
+        signupMessage.style.color = "#1e8e3e";
+
+        setTimeout(function() {
+            closeModal();
+        }, 1200);
+    } catch (error) {
+        signupMessage.textContent = error.message;
+        signupMessage.style.color = "#e74c3c";
+    }
+});
 
 </script>
 
