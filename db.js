@@ -1,7 +1,30 @@
 const fs = require("fs");
 const path = require("path");
+const os = require("os");
 
-const dataDir = path.join(__dirname, "data");
+function resolveDataDir() {
+  const candidates = [
+    process.env.DATA_DIR,
+    path.join(__dirname, "data"),
+    path.join(os.tmpdir(), "kwangju-get-job-data")
+  ];
+
+  for (const candidate of candidates) {
+    if (!candidate) continue;
+
+    try {
+      fs.mkdirSync(candidate, { recursive: true });
+      fs.accessSync(candidate, fs.constants.W_OK);
+      return candidate;
+    } catch (error) {
+      // 다음 후보를 시도합니다.
+    }
+  }
+
+  return path.join(os.tmpdir(), "kwangju-get-job-data");
+}
+
+const dataDir = resolveDataDir();
 const usersFilePath = path.join(dataDir, "users.json");
 
 fs.mkdirSync(dataDir, { recursive: true });
@@ -25,6 +48,7 @@ function writeUsers(users) {
 }
 
 module.exports = {
+  dataDir,
   usersFilePath,
   readUsers,
   writeUsers

@@ -32,7 +32,14 @@ function ensureAdminUser() {
   };
 
   users.push(newAdmin);
-  writeUsers(users);
+
+  try {
+    writeUsers(users);
+  } catch (error) {
+    // 배포 환경에서는 폴더 권한 문제로 저장이 실패할 수 있으므로,
+    // 로그인 자체는 계속 동작하도록 안전하게 처리합니다.
+  }
+
   return newAdmin;
 }
 
@@ -111,14 +118,18 @@ function createUser({ name, username, email, password }) {
 }
 
 function loginUser({ username, password }) {
-  ensureAdminUser();
+  const users = readUsers();
+  const adminCandidate = users.find((entry) => entry.username === "admin");
+
+  if (!adminCandidate) {
+    ensureAdminUser();
+  }
 
   const safeUsername = String(username || "").trim();
   validateUsername(safeUsername);
   validatePassword(password);
 
-  const users = readUsers();
-  const user = users.find((entry) => entry.username === safeUsername);
+  const user = readUsers().find((entry) => entry.username === safeUsername);
 
   if (!user) {
     throw new Error("존재하지 않는 아이디입니다.");

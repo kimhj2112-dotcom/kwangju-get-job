@@ -79,5 +79,21 @@
     "email": "dup_1790423658726@example.com",
     "passwordHash": "$2a$10$7/yV1/AWbc3AIYXV3V/9pe/BGfkVZmYPQXlvsRvLOkvMBPAJG5Tl.",
     "createdAt": "2026-09-26T11:54:18.932Z"
+  },
+  {
+    "id": 1790424357995,
+    "name": "테스트유저",
+    "username": "tester_1790424357767",
+    "email": "tester_1790424357767@example.com",
+    "passwordHash": "$2a$10$scYsvsURvQY2/o2V9YRhNOcNDK1SMhae8p6oqkt8EeWsvoUmbuGiK",
+    "createdAt": "2026-09-26T12:05:57.995Z"
+  },
+  {
+    "id": 1790424358496,
+    "name": "유저1",
+    "username": "dup_1790424358280",
+    "email": "dup_1790424358280@example.com",
+    "passwordHash": "$2a$10$KqEMCs4peWsZnC.mRTjaCuOS5eb7hK7ErCh0Mc03qTU4us5Ap8rbS",
+    "createdAt": "2026-09-26T12:05:58.496Z"
   }
 ]
