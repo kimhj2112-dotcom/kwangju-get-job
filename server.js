@@ -108,6 +108,13 @@ app.get("/api/user/:username", (req, res) => {
   }
 });
 
+app.use("/api", (req, res) => {
+  res.status(404).json({
+    success: false,
+    error: "존재하지 않는 API 경로입니다."
+  });
+});
+
 app.put("/api/user/:username", (req, res) => {
   const dataPath = path.join(__dirname, "data", "users.json");
   const username = req.params.username;

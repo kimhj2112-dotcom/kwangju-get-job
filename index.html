@@ -1420,6 +1420,21 @@ function getStoredUser() {
     }
 }
 
+async function parseJsonResponse(response) {
+    const contentType = response.headers.get("content-type") || "";
+
+    if (!contentType.includes("application/json")) {
+        const text = await response.text();
+        throw new Error(
+            text && text.includes("<html")
+                ? "서버가 HTML 페이지를 반환했습니다. 서버 상태를 확인해주세요."
+                : "서버 응답 형식이 올바르지 않습니다."
+        );
+    }
+
+    return response.json();
+}
+
 async function loadDashboard() {
     const user = getStoredUser();
 
@@ -1716,7 +1731,7 @@ loginForm.addEventListener("submit", async function(e) {
             body: JSON.stringify({ username, password })
         });
 
-        const result = await response.json();
+        const result = await parseJsonResponse(response);
 
         if (!response.ok || !result.success) {
             throw new Error(result.error || "로그인 실패");
@@ -1804,7 +1819,7 @@ profileForm.addEventListener("submit", async function(e) {
             body: JSON.stringify({ name, email, password: password || undefined })
         });
 
-        const result = await response.json();
+        const result = await parseJsonResponse(response);
 
         if (!response.ok || !result.success) {
             throw new Error(result.error || "회원정보 수정 실패");
@@ -1851,7 +1866,7 @@ signupForm.addEventListener("submit", async function(e) {
             body: JSON.stringify({ name, username, email, password })
         });
 
-        const result = await response.json();
+        const result = await parseJsonResponse(response);
 
         if (!response.ok || !result.success) {
             throw new Error(result.error || "회원가입 실패");
