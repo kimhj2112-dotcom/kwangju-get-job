@@ -3,11 +3,9 @@ const path = require("path");
 const os = require("os");
 
 function resolveDataDir() {
-  const candidates = [
-    process.env.DATA_DIR,
-    path.join(__dirname, "data"),
-    path.join(os.tmpdir(), "kwangju-get-job-data")
-  ];
+  const projectDataDir = path.join(__dirname, "data");
+  const explicitDataDir = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : null;
+  const candidates = [explicitDataDir, projectDataDir];
 
   for (const candidate of candidates) {
     if (!candidate) continue;
@@ -21,7 +19,7 @@ function resolveDataDir() {
     }
   }
 
-  return path.join(os.tmpdir(), "kwangju-get-job-data");
+  return projectDataDir;
 }
 
 const dataDir = resolveDataDir();

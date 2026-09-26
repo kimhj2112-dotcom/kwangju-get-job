@@ -111,5 +111,21 @@
     "email": "dup_1790424554154@example.com",
     "passwordHash": "$2a$10$uw2oeK8VA12AQgYGX7pDOuR.v8AXSRJOjFxiivCDHIfnWLhLDvcYi",
     "createdAt": "2026-09-26T12:09:14.403Z"
+  },
+  {
+    "id": 1790463541891,
+    "name": "테스트유저",
+    "username": "testuser999",
+    "email": "testuser999@example.com",
+    "passwordHash": "$2a$10$P8AYW.TA4qhG7S0M/y2ihObvMtjr0xqR8LLK3Jdz7p5Gl7eOanlZG",
+    "createdAt": "2026-09-26T22:59:01.891Z"
+  },
+  {
+    "id": 1790464154025,
+    "name": "김현진",
+    "username": "acanad",
+    "email": "kimhj2112@gmail.com",
+    "passwordHash": "$2a$10$vV0Wc/Pe4Yy/uwa566qiQOpKR0ofFZMvCISWmY4YKIqLCSkeBGfqO",
+    "createdAt": "2026-09-26T23:09:14.025Z"
   }
 ]
