@@ -1,6 +1,25 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { createUser, loginUser } = require("./auth");
+const {
+  createUser,
+  loginUser,
+  ensureAdminUser,
+  deleteUserByUsername,
+  getUsers
+} = require("./auth");
+
+test("관리자 계정이 자동 생성된다", () => {
+  ensureAdminUser();
+  const users = getUsers();
+
+  assert.ok(users.some((user) => user.username === "admin"));
+});
+
+test("관리자 계정은 삭제할 수 없다", () => {
+  assert.throws(() => {
+    deleteUserByUsername("admin");
+  }, /관리자 계정은 삭제할 수 없습니다/);
+});
 
 test("회원 생성 및 로그인 성공", () => {
   const username = `tester_${Date.now()}`;

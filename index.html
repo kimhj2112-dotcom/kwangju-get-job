@@ -78,6 +78,24 @@ header {
     gap: 10px;
 }
 
+.user-state {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f3f8ff;
+    border: 1px solid #dfeaff;
+    border-radius: 999px;
+    padding: 8px 12px;
+    color: #194db5;
+    font-weight: 700;
+}
+
+.user-state.hidden,
+#openSignupModal.hidden,
+#openLoginModal.hidden {
+    display: none;
+}
+
 .auth-btn {
     background: #1769e0;
     color: white;
@@ -103,6 +121,143 @@ header {
 
 .auth-btn.secondary:hover {
     background: #dfeeff;
+}
+
+.mypage-btn {
+    background: #eaf4ff;
+    color: #0f58c3;
+    border: 1px solid #cfe2ff;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.profile-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 22, 31, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1100;
+}
+
+.profile-modal.open {
+    display: flex;
+}
+
+.profile-modal-content {
+    position: relative;
+    width: min(420px, 100%);
+    background: white;
+    border-radius: 18px;
+    padding: 28px 24px 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+}
+
+.profile-modal-content h2 {
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.profile-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2f3b52;
+}
+
+.profile-form input {
+    border: 1px solid #dfe7f5;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 15px;
+    outline: none;
+}
+
+.profile-form input:focus {
+    border-color: #1769e0;
+    box-shadow: 0 0 0 3px rgba(23, 105, 224, 0.12);
+}
+
+.profile-message {
+    min-height: 20px;
+    font-size: 14px;
+    color: #1e8e3e;
+    text-align: center;
+}
+
+.detail-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 22, 31, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1200;
+}
+
+.detail-modal.open {
+    display: flex;
+}
+
+.detail-modal-content {
+    width: min(440px, 100%);
+    background: white;
+    border-radius: 18px;
+    padding: 28px 24px 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+    position: relative;
+}
+
+.detail-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.detail-modal-header h3 {
+    font-size: 24px;
+}
+
+.detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.detail-row {
+    background: #f7f9ff;
+    border: 1px solid #ebf1ff;
+    border-radius: 12px;
+    padding: 12px 14px;
+}
+
+.detail-row .label {
+    display: block;
+    color: #5f7090;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.detail-row .value {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1b2b3c;
+    word-break: break-word;
 }
 
 .login-modal {
@@ -334,6 +489,127 @@ header {
     margin-bottom: 5px;
 }
 
+.dashboard {
+    background: white;
+    border: 1px solid #e8eefc;
+    border-radius: 18px;
+    box-shadow: 0 10px 28px rgba(17, 24, 39, 0.06);
+    padding: 28px 24px;
+    margin-top: 18px;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.dashboard-header h3 {
+    font-size: 24px;
+    color: #1e2f4b;
+}
+
+.dashboard-status {
+    font-size: 14px;
+    color: #48607b;
+    font-weight: 600;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.stat-box {
+    background: #f6f9ff;
+    border: 1px solid #e5efff;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.stat-label {
+    color: #5b6d85;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.stat-value {
+    font-size: 30px;
+    font-weight: 800;
+    color: #1769e0;
+}
+
+.user-list {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+
+.user-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    background: #fbfcff;
+    border: 1px solid #edf2ff;
+    border-radius: 12px;
+    padding: 14px 16px;
+}
+
+.admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.admin-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.admin-btn.primary {
+    background: #eaf4ff;
+    color: #0f58c3;
+}
+
+.admin-btn.danger {
+    background: #ffe9ea;
+    color: #d13244;
+}
+
+.user-list .user-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.user-list strong {
+    color: #1d2d3d;
+}
+
+.user-list span {
+    color: #5d6e80;
+    font-size: 13px;
+}
+
+.user-list .user-tag {
+    background: #eaf4ff;
+    color: #0f58c3;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
 /* JOB CARDS */
 
 .job-grid {
@@ -534,6 +810,11 @@ footer {
         </div>
 
         <div class="nav-right">
+            <div class="user-state hidden" id="userState">
+                <button class="mypage-btn" id="openProfileModal" type="button">마이페이지</button>
+                <span id="userGreeting">환영합니다.</span>
+                <button class="auth-btn secondary" id="logoutBtn" type="button">로그아웃</button>
+            </div>
             <button class="auth-btn secondary" id="openSignupModal" type="button">회원가입</button>
             <button class="auth-btn" id="openLoginModal" type="button">로그인</button>
         </div>
@@ -609,6 +890,87 @@ footer {
 
     </div>
 
+</div>
+
+<section class="container" id="dashboardSection">
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <h3>👥 가입자 대시보드</h3>
+            <div class="dashboard-status" id="dashboardStatus">로그인 후 이용할 수 있습니다.</div>
+        </div>
+
+        <div class="dashboard-stats">
+            <div class="stat-box">
+                <div class="stat-label">총 가입자</div>
+                <div class="stat-value" id="usersCount">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">현재 로그인</div>
+                <div class="stat-value" id="currentUserCount">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">상태</div>
+                <div class="stat-value" id="dashboardState">대기</div>
+            </div>
+        </div>
+
+        <ul class="user-list" id="userList">
+            <li>
+                <div class="user-meta">
+                    <strong>로그인 후 확인</strong>
+                    <span>회원 정보를 불러오고 있습니다.</span>
+                </div>
+                <span class="user-tag">대기</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="container" id="adminSection" style="display:none;">
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <h3>🛡️ 관리자 회원 관리</h3>
+            <div class="dashboard-status" id="adminStatus">관리자 계정으로 로그인하면 이용할 수 있습니다.</div>
+        </div>
+
+        <ul class="user-list" id="adminUserList">
+            <li>
+                <div class="user-meta">
+                    <strong>관리자 전용 목록</strong>
+                    <span>회원 목록을 불러오는 중입니다.</span>
+                </div>
+                <span class="user-tag">관리자</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<div class="detail-modal" id="adminDetailModal" aria-hidden="true">
+    <div class="detail-modal-content" role="dialog" aria-modal="true" aria-labelledby="adminDetailTitle">
+        <button class="close-btn" id="closeAdminDetailModal" type="button" aria-label="닫기">×</button>
+        <div class="detail-modal-header">
+            <h3 id="adminDetailTitle">회원 상세</h3>
+        </div>
+
+        <div class="detail-list">
+            <div class="detail-row">
+                <span class="label">이름</span>
+                <div class="value" id="detailName">-</div>
+            </div>
+            <div class="detail-row">
+                <span class="label">아이디</span>
+                <div class="value" id="detailUsername">-</div>
+            </div>
+            <div class="detail-row">
+                <span class="label">이메일</span>
+                <div class="value" id="detailEmail">-</div>
+            </div>
+            <div class="detail-row">
+                <span class="label">권한</span>
+                <div class="value" id="detailRole">-</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -945,6 +1307,33 @@ footer {
     </div>
 </div>
 
+<div class="profile-modal" id="profileModal" aria-hidden="true">
+    <div class="profile-modal-content" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
+        <button class="close-btn" id="closeProfileModal" type="button" aria-label="닫기">×</button>
+        <h2 id="profileTitle">마이페이지</h2>
+
+        <form class="profile-form" id="profileForm">
+            <label>
+                이름
+                <input type="text" id="profileName" placeholder="이름을 입력하세요">
+            </label>
+
+            <label>
+                이메일
+                <input type="email" id="profileEmail" placeholder="example@email.com">
+            </label>
+
+            <label>
+                비밀번호 변경(선택)
+                <input type="password" id="profilePassword" placeholder="새 비밀번호를 입력하세요">
+            </label>
+
+            <button type="submit" class="submit-btn">정보 수정</button>
+            <p class="profile-message" id="profileMessage"></p>
+        </form>
+    </div>
+</div>
+
 <script>
 
 /* 검색 기능 */
@@ -996,6 +1385,248 @@ const signupMessage = document.getElementById("signupMessage");
 const loginIdInput = document.getElementById("loginId");
 const loginPasswordInput = document.getElementById("loginPassword");
 const authTitle = document.getElementById("authTitle");
+const userGreeting = document.getElementById("userGreeting");
+const userState = document.getElementById("userState");
+const logoutBtn = document.getElementById("logoutBtn");
+const profileModal = document.getElementById("profileModal");
+const closeProfileModal = document.getElementById("closeProfileModal");
+const profileForm = document.getElementById("profileForm");
+const profileMessage = document.getElementById("profileMessage");
+const profileName = document.getElementById("profileName");
+const profileEmail = document.getElementById("profileEmail");
+const profilePassword = document.getElementById("profilePassword");
+const openProfileModalBtn = document.getElementById("openProfileModal");
+const dashboardStatus = document.getElementById("dashboardStatus");
+const userList = document.getElementById("userList");
+const usersCount = document.getElementById("usersCount");
+const currentUserCount = document.getElementById("currentUserCount");
+const dashboardState = document.getElementById("dashboardState");
+const adminSection = document.getElementById("adminSection");
+const adminStatus = document.getElementById("adminStatus");
+const adminUserList = document.getElementById("adminUserList");
+const adminDetailModal = document.getElementById("adminDetailModal");
+const closeAdminDetailModal = document.getElementById("closeAdminDetailModal");
+const detailName = document.getElementById("detailName");
+const detailUsername = document.getElementById("detailUsername");
+const detailEmail = document.getElementById("detailEmail");
+const detailRole = document.getElementById("detailRole");
+
+function getStoredUser() {
+    try {
+        const user = localStorage.getItem("kwangjuJobUser");
+        return user ? JSON.parse(user) : null;
+    } catch (error) {
+        return null;
+    }
+}
+
+async function loadDashboard() {
+    const user = getStoredUser();
+
+    if (!user) {
+        dashboardStatus.textContent = "로그인 후 이용할 수 있습니다.";
+        dashboardState.textContent = "대기";
+        currentUserCount.textContent = "0";
+        usersCount.textContent = "0";
+        adminSection.style.display = "none";
+        userList.innerHTML = `
+            <li>
+                <div class="user-meta">
+                    <strong>로그인 후 확인</strong>
+                    <span>회원 정보를 불러오고 있습니다.</span>
+                </div>
+                <span class="user-tag">대기</span>
+            </li>
+        `;
+        adminUserList.innerHTML = `
+            <li>
+                <div class="user-meta">
+                    <strong>관리자 전용 목록</strong>
+                    <span>로그인 후 확인할 수 있습니다.</span>
+                </div>
+                <span class="user-tag">관리자</span>
+            </li>
+        `;
+        return;
+    }
+
+    try {
+        const response = await fetch("/api/users");
+        const result = await response.json();
+        const users = Array.isArray(result?.users) ? result.users : [];
+
+        dashboardStatus.textContent = `${user.name}님이 접속 중입니다.`;
+        dashboardState.textContent = "활성";
+        currentUserCount.textContent = "1";
+        usersCount.textContent = String(users.length);
+
+        const isAdmin = String(user.username || "") === "admin" || String(user.role || "") === "admin";
+        adminSection.style.display = isAdmin ? "block" : "none";
+
+        if (!isAdmin) {
+            adminStatus.textContent = "관리자 계정으로만 관리를 할 수 있습니다.";
+        }
+
+        if (users.length === 0) {
+            userList.innerHTML = `
+                <li>
+                    <div class="user-meta">
+                        <strong>아직 가입한 회원이 없습니다.</strong>
+                        <span>첫 번째 회원을 만들어 보세요.</span>
+                    </div>
+                    <span class="user-tag">비어 있음</span>
+                </li>
+            `;
+            return;
+        }
+
+        userList.innerHTML = users.map((entry) => `
+            <li>
+                <div class="user-meta">
+                    <strong>${entry.name || "회원"}</strong>
+                    <span>${entry.username} · ${entry.email}</span>
+                </div>
+                <span class="user-tag">${entry.username === user.username ? "본인" : "회원"}</span>
+            </li>
+        `).join("");
+
+        if (isAdmin) {
+            await loadAdminUsers();
+        }
+    } catch (error) {
+        dashboardStatus.textContent = "회원 정보를 불러오지 못했습니다.";
+        dashboardState.textContent = "오류";
+        currentUserCount.textContent = "0";
+        userList.innerHTML = `
+            <li>
+                <div class="user-meta">
+                    <strong>데이터를 불러오지 못했습니다.</strong>
+                    <span>잠시 후 다시 시도해 주세요.</span>
+                </div>
+                <span class="user-tag">오류</span>
+            </li>
+        `;
+    }
+}
+
+async function openAdminDetail(username) {
+    try {
+        const response = await fetch(`/api/user/${username}`);
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(result.error || "회원 정보를 불러오지 못했습니다.");
+        }
+
+        const user = result.user || {};
+        detailName.textContent = user.name || "-";
+        detailUsername.textContent = user.username || "-";
+        detailEmail.textContent = user.email || "-";
+        detailRole.textContent = user.role === "admin" ? "관리자" : "회원";
+        adminDetailModal.classList.add("open");
+        adminDetailModal.setAttribute("aria-hidden", "false");
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+async function loadAdminUsers() {
+    try {
+        const response = await fetch("/api/admin/users");
+        const result = await response.json();
+        const users = Array.isArray(result?.users) ? result.users : [];
+
+        adminStatus.textContent = `${users.length}명의 회원을 관리 중입니다.`;
+
+        if (users.length === 0) {
+            adminUserList.innerHTML = `
+                <li>
+                    <div class="user-meta">
+                        <strong>등록된 회원이 없습니다.</strong>
+                        <span>아직 관리할 회원이 없습니다.</span>
+                    </div>
+                    <span class="user-tag">비어 있음</span>
+                </li>
+            `;
+            return;
+        }
+
+        adminUserList.innerHTML = users.map((entry) => `
+            <li>
+                <div class="user-meta">
+                    <strong>${entry.name || "회원"}</strong>
+                    <span>${entry.username} · ${entry.email}</span>
+                </div>
+                <div class="admin-actions">
+                    <span class="user-tag">${entry.role === "admin" ? "관리자" : "회원"}</span>
+                    <button type="button" class="admin-btn primary" data-detail-user="${entry.username}">상세보기</button>
+                    ${entry.username === "admin" ? "" : `<button type="button" class="admin-btn danger" data-delete-user="${entry.username}">삭제</button>`}
+                </div>
+            </li>
+        `).join("");
+
+        adminUserList.querySelectorAll("[data-detail-user]").forEach((button) => {
+            button.addEventListener("click", function() {
+                openAdminDetail(this.dataset.detailUser);
+            });
+        });
+
+        adminUserList.querySelectorAll("[data-delete-user]").forEach((button) => {
+            button.addEventListener("click", async function() {
+                const username = this.dataset.deleteUser;
+                if (!username) return;
+
+                const confirmed = confirm(`${username} 회원을 삭제하시겠습니까?`);
+                if (!confirmed) return;
+
+                try {
+                    const delRes = await fetch(`/api/admin/users/${username}`, { method: "DELETE" });
+                    const delResult = await delRes.json();
+
+                    if (!delRes.ok || !delResult.success) {
+                        throw new Error(delResult.error || "삭제 실패");
+                    }
+
+                    alert("회원이 삭제되었습니다.");
+                    await loadDashboard();
+                } catch (error) {
+                    alert(error.message);
+                }
+            });
+        });
+    } catch (error) {
+        adminStatus.textContent = "관리자 목록을 불러오지 못했습니다.";
+        adminUserList.innerHTML = `
+            <li>
+                <div class="user-meta">
+                    <strong>관리자 목록 오류</strong>
+                    <span>잠시 후 다시 시도해 주세요.</span>
+                </div>
+                <span class="user-tag">오류</span>
+            </li>
+        `;
+    }
+}
+
+function renderAuthState() {
+    const user = getStoredUser();
+    const signupBtn = document.getElementById("openSignupModal");
+    const loginBtn = document.getElementById("openLoginModal");
+
+    if (user) {
+        userState.classList.remove("hidden");
+        signupBtn.classList.add("hidden");
+        loginBtn.classList.add("hidden");
+        userGreeting.textContent = user.name + "님 환영합니다.";
+        loadDashboard();
+        return;
+    }
+
+    userState.classList.add("hidden");
+    signupBtn.classList.remove("hidden");
+    loginBtn.classList.remove("hidden");
+    loadDashboard();
+}
 
 function openModal(mode = "login") {
     loginModal.classList.add("open");
@@ -1091,11 +1722,11 @@ loginForm.addEventListener("submit", async function(e) {
             throw new Error(result.error || "로그인 실패");
         }
 
+        localStorage.setItem("kwangjuJobUser", JSON.stringify(result.user));
+        renderAuthState();
+
         loginMessage.textContent = "로그인 성공! 환영합니다.";
         loginMessage.style.color = "#1e8e3e";
-
-        const loginBtn = document.getElementById("openLoginModal");
-        loginBtn.textContent = result.user.name + "님";
 
         setTimeout(function() {
             closeModal();
@@ -1103,6 +1734,93 @@ loginForm.addEventListener("submit", async function(e) {
     } catch (error) {
         loginMessage.textContent = error.message;
         loginMessage.style.color = "#e74c3c";
+    }
+});
+
+logoutBtn.addEventListener("click", function() {
+    localStorage.removeItem("kwangjuJobUser");
+    renderAuthState();
+    window.location.href = "/";
+});
+
+openProfileModalBtn.addEventListener("click", function() {
+    const user = getStoredUser();
+    if (!user) return;
+
+    profileName.value = user.name || "";
+    profileEmail.value = user.email || "";
+    profilePassword.value = "";
+    profileMessage.textContent = "";
+    profileModal.classList.add("open");
+    profileModal.setAttribute("aria-hidden", "false");
+});
+
+closeProfileModal.addEventListener("click", function() {
+    profileModal.classList.remove("open");
+    profileModal.setAttribute("aria-hidden", "true");
+    profileForm.reset();
+    profileMessage.textContent = "";
+});
+
+closeAdminDetailModal.addEventListener("click", function() {
+    adminDetailModal.classList.remove("open");
+    adminDetailModal.setAttribute("aria-hidden", "true");
+});
+
+adminDetailModal.addEventListener("click", function(e) {
+    if (e.target === adminDetailModal) {
+        closeAdminDetailModal.click();
+    }
+});
+
+profileModal.addEventListener("click", function(e) {
+    if (e.target === profileModal) {
+        closeProfileModal.click();
+    }
+});
+
+profileForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const user = getStoredUser();
+    if (!user) {
+        return;
+    }
+
+    const name = profileName.value.trim();
+    const email = profileEmail.value.trim();
+    const password = profilePassword.value.trim();
+
+    if (!name || !email) {
+        profileMessage.textContent = "이름과 이메일을 모두 입력해주세요.";
+        profileMessage.style.color = "#e74c3c";
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/user/${user.username}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password: password || undefined })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(result.error || "회원정보 수정 실패");
+        }
+
+        localStorage.setItem("kwangjuJobUser", JSON.stringify(result.user));
+        renderAuthState();
+        profileMessage.textContent = "회원정보가 수정되었습니다.";
+        profileMessage.style.color = "#1e8e3e";
+
+        setTimeout(function() {
+            closeProfileModal.click();
+        }, 800);
+    } catch (error) {
+        profileMessage.textContent = error.message;
+        profileMessage.style.color = "#e74c3c";
     }
 });
 
@@ -1139,6 +1857,9 @@ signupForm.addEventListener("submit", async function(e) {
             throw new Error(result.error || "회원가입 실패");
         }
 
+        localStorage.setItem("kwangjuJobUser", JSON.stringify(result.user));
+        renderAuthState();
+
         signupMessage.textContent = "회원가입 완료! 서버 DB에 저장되었습니다.";
         signupMessage.style.color = "#1e8e3e";
 
@@ -1150,6 +1871,8 @@ signupForm.addEventListener("submit", async function(e) {
         signupMessage.style.color = "#e74c3c";
     }
 });
+
+renderAuthState();
 
 </script>
 

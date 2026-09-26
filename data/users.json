@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1790423088910,
+    "name": "????",
+    "username": "serveruser01",
+    "email": "serveruser01@example.com",
+    "passwordHash": "$2a$10$cPkXi8W3c58Z2BPdkS4QyujOGEau5v.eKDSE7ok4BYIztwM2uykNC",
+    "createdAt": "2026-09-26T11:44:48.910Z"
+  },
+  {
+    "id": 1790423510078,
+    "name": "테스트유저",
+    "username": "tester_1790423509901",
+    "email": "tester_1790423509901@example.com",
+    "passwordHash": "$2a$10$8ZByqMULkXI3xYYYyvm6U.LHCUcjnjT5eP3toKjeHz0vq/EBfHQ02",
+    "createdAt": "2026-09-26T11:51:50.078Z"
+  },
+  {
+    "id": 1790423510429,
+    "name": "유저1",
+    "username": "dup_1790423510250",
+    "email": "dup_1790423510250@example.com",
+    "passwordHash": "$2a$10$R9h4gZNVStxs4sBoC15rterqSH/HSPRurQiMYb6737fXIRzIC.8eK",
+    "createdAt": "2026-09-26T11:51:50.429Z"
+  },
+  {
+    "id": 1790423569134,
+    "name": "테스트유저",
+    "username": "tester_1790423568974",
+    "email": "tester_1790423568974@example.com",
+    "passwordHash": "$2a$10$QcC3LP8Mo/BLkhNZnS08eeHByuXecClgrzuhbjBgarLTdVSsGwm8G",
+    "createdAt": "2026-09-26T11:52:49.134Z"
+  },
+  {
+    "id": 1790423569457,
+    "name": "유저1",
+    "username": "dup_1790423569300",
+    "email": "dup_1790423569300@example.com",
+    "passwordHash": "$2a$10$udOv7nRGFRKRbVc88WAfx.07GmoQl6hNyS2gw6EwEfRWQYf4srI2G",
+    "createdAt": "2026-09-26T11:52:49.457Z"
+  },
+  {
+    "id": 1790423603625,
+    "name": "관리자",
+    "username": "admin",
+    "email": "admin@kwangju-job.com",
+    "passwordHash": "$2a$10$vVITgFmZ6UHkH8c0tNkLQ.ItB3Ni5difywKF9gBEnqrZQHRbb/CoK",
+    "role": "admin",
+    "createdAt": "2026-09-26T11:53:23.816Z"
+  },
+  {
+    "id": 1790423604044,
+    "name": "테스트유저",
+    "username": "tester_1790423603834",
+    "email": "tester_1790423603834@example.com",
+    "passwordHash": "$2a$10$3iqT0g5KS/oj0bVD4h.VQuAyYUVDlF9SMk3aIe7b/W2cu4uLG2Vsa",
+    "createdAt": "2026-09-26T11:53:24.044Z"
+  },
+  {
+    "id": 1790423604396,
+    "name": "유저1",
+    "username": "dup_1790423604232",
+    "email": "dup_1790423604232@example.com",
+    "passwordHash": "$2a$10$L91ueJCV1dyYJQB.CAUJp.QbUJ8ey6kSpJQbKLl7Vj6gJb3c.Z8ya",
+    "createdAt": "2026-09-26T11:53:24.396Z"
+  },
+  {
+    "id": 1790423658493,
+    "name": "테스트유저",
+    "username": "tester_1790423658235",
+    "email": "tester_1790423658235@example.com",
+    "passwordHash": "$2a$10$f4VNSNdJLuD63EjFmqtW/.34M8u3stQCFtJnP1j9QgRyldBBlgJd.",
+    "createdAt": "2026-09-26T11:54:18.493Z"
+  },
+  {
+    "id": 1790423658932,
+    "name": "유저1",
+    "username": "dup_1790423658726",
+    "email": "dup_1790423658726@example.com",
+    "passwordHash": "$2a$10$7/yV1/AWbc3AIYXV3V/9pe/BGfkVZmYPQXlvsRvLOkvMBPAJG5Tl.",
+    "createdAt": "2026-09-26T11:54:18.932Z"
+  }
+]

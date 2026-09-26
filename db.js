@@ -1,22 +1,31 @@
 const fs = require("fs");
 const path = require("path");
-const Database = require("better-sqlite3");
 
 const dataDir = path.join(__dirname, "data");
+const usersFilePath = path.join(dataDir, "users.json");
+
 fs.mkdirSync(dataDir, { recursive: true });
 
-const db = new Database(path.join(dataDir, "app.db"));
-db.pragma("journal_mode = WAL");
+if (!fs.existsSync(usersFilePath)) {
+  fs.writeFileSync(usersFilePath, JSON.stringify([], null, 2), "utf8");
+}
 
-db.exec(`
-  CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    username TEXT NOT NULL UNIQUE,
-    email TEXT NOT NULL UNIQUE,
-    password_hash TEXT NOT NULL,
-    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
-  );
-`);
+function readUsers() {
+  try {
+    const content = fs.readFileSync(usersFilePath, "utf8");
+    const parsed = JSON.parse(content);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    return [];
+  }
+}
 
-module.exports = db;
+function writeUsers(users) {
+  fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2), "utf8");
+}
+
+module.exports = {
+  usersFilePath,
+  readUsers,
+  writeUsers
+};
